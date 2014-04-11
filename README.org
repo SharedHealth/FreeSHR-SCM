@@ -1,0 +1,3 @@
+Prerequisites
+
+FreeSHR-SCM uses ansible. You would need to have ansible installed in your machine to use FreeSHR-SCM to deploy software to remote hosts
