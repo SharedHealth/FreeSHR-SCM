@@ -11,6 +11,8 @@ RUN yum -y install http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/epel/6
 RUN yum -y update
 RUN yum -y upgrade
 
+#Install ssh
+RUN yum -y install openssh-server openssh-clients
 # install the ansible
 RUN yum -y install ansible
 
