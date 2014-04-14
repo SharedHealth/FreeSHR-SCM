@@ -13,3 +13,6 @@ RUN yum -y upgrade
 
 # install the ansible
 RUN yum -y install ansible
+
+#Configure hosts
+ADD hosts /etc/ansible/hosts

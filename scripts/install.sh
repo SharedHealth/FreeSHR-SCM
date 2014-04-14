@@ -11,5 +11,5 @@ yum install -y docker-io
 docker pull centos
 
 #install ansible
-docker build - < /vagrant/dockerfiles/DockerFile
-
+cd /vagrant/dockerfiles
+docker build -t ansible .
