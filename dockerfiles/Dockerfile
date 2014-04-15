@@ -14,7 +14,7 @@ RUN yum -y upgrade
 #Install ssh
 RUN yum -y install openssh-server openssh-clients
 #Install pip
-RUM yum -y install python-pip
+RUN yum -y install python-pip
 #install ansible
 RUN yum install -y ansible
 #Configure hosts
