@@ -22,4 +22,4 @@ ADD hosts /etc/ansible/hosts
 #Install git
 RUN yum install -y git
 #checkout playbooks repo
-RUN git clone https://github.com/SharedHealth/FreeSHR-Playbooks.git /playbooks
+RUN /usr/bin/git clone https://github.com/SharedHealth/FreeSHR-Playbooks.git /playbooks
