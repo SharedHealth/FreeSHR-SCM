@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#sudo
-sudo su
+#CWD 
+cd /opt/scm/dockerfiles
 
 #install docker
-rpm -ivh /vagrant/lib/xz.rpm
-rpm -ivh /vagrant/lib/bridge-utils.rpm
-rpm -ivh /vagrant/lib/epel.rpm
-rpm -ivh /vagrant/lib/remi.rpm
+rpm -ivh /opt/scm/lib/xz.rpm
+rpm -ivh /opt/scm/lib/bridge-utils.rpm
+rpm -ivh /opt/scm/lib/epel.rpm
+rpm -ivh /opt/scm/lib/remi.rpm
 yum install -y docker-io
 
 #start the docker service
@@ -25,5 +25,4 @@ echo "Pulling centos"
 docker pull centos
 
 #install ansible
-cd /vagrant/dockerfiles
 docker build -t ansible .

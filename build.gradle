@@ -11,5 +11,32 @@ buildscript {
 apply plugin: 'rpm'
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.7'
+    gradleVersion = '1.4'
+}
+
+task scmDist(type: Rpm) {
+
+  packageName = 'shrscm'
+  version = '0.1'
+  release = 1
+  arch = NOARCH
+  os = LINUX
+  
+  postInstall = file('scripts/install.sh')
+
+  into '/opt/scm'  
+
+  from('dockerfiles') {
+    into 'dockerfiles'
+    exclude 'hosts'
+  }
+ 
+  from('lib') {
+    into 'lib'
+  }
+
+  from('etc') {
+    into 'dockerfiles'
+  }
+
 }
