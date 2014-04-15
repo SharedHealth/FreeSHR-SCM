@@ -13,7 +13,13 @@ RUN yum -y upgrade
 
 #Install ssh
 RUN yum -y install openssh-server openssh-clients
+#Install pip
+RUM yum -y install python-pip
 #install ansible
 RUN yum install -y ansible
 #Configure hosts
 ADD hosts /etc/ansible/hosts
+#Install git
+RUN yum install -y git
+#checkout playbooks repo
+RUN git clone https://github.com/SharedHealth/FreeSHR-Playbooks.git /playbooks
