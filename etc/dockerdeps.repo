@@ -1,0 +1,5 @@
+[dockerdeps]
+name=Dependencies for docker
+baseurl=file:///opt/scm/lib
+enabled=1
+gpgcheck=0

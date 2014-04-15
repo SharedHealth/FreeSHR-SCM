@@ -14,15 +14,15 @@ task wrapper(type: Wrapper) {
     gradleVersion = '1.4'
 }
 
-task scmDist(type: Rpm) {
+task scmDepsDist(type: Rpm) {
 
-  packageName = 'shrscm'
+  packageName = 'shr-scm-deps'
   version = '0.1'
   release = 1
   arch = NOARCH
   os = LINUX
-  
-  postInstall = file('scripts/install.sh')
+
+  postInstall = file("scripts/install-deps.sh")
 
   into '/opt/scm'  
 
@@ -37,6 +37,42 @@ task scmDist(type: Rpm) {
 
   from('etc') {
     into 'dockerfiles'
+    exclude 'dockerdeps.repo'
   }
 
+  from('etc') {
+    into 'etc'
+    exclude 'hosts'
+  }
+
+
 }
+
+task scmInstallDist(type: Rpm) {
+  packageName = 'shr-scm-install'
+  version = '0.1'
+  release = 1 
+  arch = NOARCH
+  os = LINUX
+
+  requires('xz')
+  requires('bridge-utils')
+  requires('epel-release')
+  requires('remi-release')
+  requires('docker-io')
+
+  postInstall = file('scripts/install.sh')
+
+  into '/tmp/placeholder'  
+
+  from('etc') {
+    into 'etc'
+    exclude 'hosts'
+  }
+ 
+}
+
+task buildAll << {
+}
+
+buildAll.dependsOn=["scmInstallDist","scmDepsDist"]

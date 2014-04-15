@@ -3,13 +3,6 @@
 #CWD 
 cd /opt/scm/dockerfiles
 
-#install docker
-rpm -ivh /opt/scm/lib/xz.rpm
-rpm -ivh /opt/scm/lib/bridge-utils.rpm
-rpm -ivh /opt/scm/lib/epel.rpm
-rpm -ivh /opt/scm/lib/remi.rpm
-yum install -y docker-io
-
 #start the docker service
 service docker start
 
