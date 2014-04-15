@@ -22,6 +22,8 @@ task scmDepsDist(type: Rpm) {
   arch = NOARCH
   os = LINUX
 
+  requires('createrepo')
+
   postInstall = file("scripts/install-deps.sh")
 
   into '/opt/scm'  
