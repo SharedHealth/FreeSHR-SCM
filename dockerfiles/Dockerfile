@@ -13,8 +13,12 @@ RUN yum -y upgrade
 
 #Install ssh
 RUN yum -y install openssh-server openssh-clients
-# install the ansible
-RUN yum -y install ansible
+# install pip
+RUN yum -y install python-pip
+#install ansible
+pip install ansible
+#upgrade ansible to the latest version
+pip install --upgrade ansible
 
 #Configure hosts
 ADD hosts /etc/ansible/hosts
