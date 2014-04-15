@@ -1,3 +1,7 @@
-Prerequisites
+Setting up the orchestrator
 
-FreeSHR-SCM uses ansible. You would need to have ansible installed in your machine to use FreeSHR-SCM to deploy software to remote hosts
+#+BEGIN_SRC bash
+  rpm -Uvh <Url here>      
+  docker run ansible -t -i /bin/bash
+  ansible-playbook /playbooks/go/site.yml
+#+END_SRC
