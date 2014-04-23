@@ -4,6 +4,6 @@ Setting up the orchestrator
   yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr-scm-repo-0.1-1.noarch.rpm
   yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr-scm-deps-0.1-1.noarch.rpm
   yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr-scm-install-0.1-1.noarch.rpm
-  docker run ansible -t -i /bin/bash
+  docker run -t -i ansible /bin/bash
   ansible-playbook /playbooks/go/site.yml
 #+END_SRC
