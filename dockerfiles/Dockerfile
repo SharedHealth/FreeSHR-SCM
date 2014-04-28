@@ -8,5 +8,7 @@ RUN apt-get install -y ansible
 ADD hosts /etc/ansible/hosts
 #Install git
 RUN apt-get install -y git
+#Install SSH pass
+RUN apt-get install -y sshpass
 #checkout playbooks repo
 RUN /usr/bin/git clone https://github.com/SharedHealth/FreeSHR-Playbooks.git /playbooks
