@@ -14,6 +14,8 @@ task wrapper(type: Wrapper) {
     gradleVersion = '1.4'
 }
 
+/*RPM Tasks*/
+
 task scmRepoDist(type: Rpm) {
 
   packageName = 'shr-scm-repo'
@@ -92,3 +94,25 @@ task buildAll << {
 }
 
 buildAll.dependsOn=["scmRepoDist", "scmInstallDist","scmDepsDist"]
+
+/*End of RPM Tasks*/
+
+/*Dist Tasks*/
+
+task cleanDist(type: Delete) {
+  delete fileTree(dir: "dist", include: "*.rpm")  
+}
+
+task copyDist(type: Copy) {
+  from fileTree(dir: "build/distributions", include: "*.rpm")
+  into 'dist'
+}
+
+copyDist.outputs.upToDateWhen { false }
+
+task dist << {
+}
+
+dist.dependsOn=["cleanDist", "buildAll", "copyDist"]
+
+/*End of Dist tasks*/
