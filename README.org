@@ -7,3 +7,5 @@ Setting up the orchestrator
   docker run -t -i ansible /bin/bash
   ansible-playbook --ask-pass --ask-sudo-pass /playbooks/go/site.yml
 #+END_SRC
+
+Please ensure that the home directory on the target system is not mounted with noexec flag.
