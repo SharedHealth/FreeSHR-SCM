@@ -1,11 +1,16 @@
-Setting up the orchestrator
+Setting up the control server
+
+You would need to install epel repo from the following location
 
 #+BEGIN_SRC bash
-  yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr-scm-repo-0.1-1.noarch.rpm
-  yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr-scm-deps-0.1-1.noarch.rpm
-  yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr-scm-install-0.1-1.noarch.rpm
-  docker run -t -i ansible /bin/bash
-  ansible-playbook --ask-pass --ask-sudo-pass /playbooks/go/site.yml
+http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+#+END_SRC
+
+Once that is done, you can setup the control server by installing the following packages
+
+#+BEGIN_SRC bash
+  yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr_scm_utils-0.1-1.noarch.rpm
+  yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr_scm-0.1-1.noarch.rpm
 #+END_SRC
 
 Please ensure that the home directory on the target system is not mounted with noexec flag.

@@ -16,84 +16,50 @@ task wrapper(type: Wrapper) {
 
 /*RPM Tasks*/
 
-task scmRepoDist(type: Rpm) {
+task shr_scm_utils(type: Rpm) {
 
-  packageName = 'shr-scm-repo'
+  packageName = 'shr_scm_utils'
   version = '0.1'
   release = 1
   arch = NOARCH
   os = LINUX
 
-  requires('createrepo')
+  into '/bin'
 
-  postInstall = file("scripts/install-repo.sh")
+  requires('git')
 
-  into '/opt/scm'  
-
-  from('dockerfiles') {
-    into 'dockerfiles'
-    exclude 'hosts'
-  }
- 
-  from('lib') {
-    into 'lib'
+  from('scripts/utils') {
+    fileMode = 0755
+    include 'ansible-deploy'
   }
 
-  from('etc') {
-    into 'dockerfiles'
-    exclude 'dockerdeps.repo'
-  }
+  postInstall = file("scripts/rpm/clone.sh")
 
-  from('etc') {
-    into 'etc'
-    exclude 'hosts'
-  }
 }
 
-task scmDepsDist(type: Rpm) {
-  packageName = 'shr-scm-deps'
+task shr_scm(type: Rpm) {
+ 
+  packageName = 'shr_scm'
   version = '0.1'
   release = 1 
   arch = NOARCH
   os = LINUX
   
-  requires('xz')
-  requires('bridge-utils')
-  requires('epel-release')
-  requires('remi-release')
+  requires('shr_scm_utils')
+  requires('ansible')
 
-  into '/tmp/depsplaceholder'
+  into '/tmp'
 
-  from('etc') {
-    into 'etc'
-    exclude 'hosts'
+  from('.') {
+    include 'placeholder'
   }
-}
-
-task scmInstallDist(type: Rpm) {
-  packageName = 'shr-scm-install'
-  version = '0.1'
-  release = 1 
-  arch = NOARCH
-  os = LINUX
-
-  requires('docker-io')
-
-  postInstall = file('scripts/install.sh')
-
-  into '/tmp/placeholder'  
-
-  from('etc') {
-    into 'etc'
-    exclude 'hosts'
-  }
- 
+  
 }
 
 task buildAll << {
 }
 
-buildAll.dependsOn=["scmRepoDist", "scmInstallDist","scmDepsDist"]
+buildAll.dependsOn=["shr_scm_utils", "shr_scm"]
 
 /*End of RPM Tasks*/
 

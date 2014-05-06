@@ -1,0 +1,3 @@
+#!/bin/bash
+(cd /playbooks/FreeSHR-Playbooks && git pull --rebase)
+ansible-playbook "$@"
