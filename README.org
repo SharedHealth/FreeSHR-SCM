@@ -3,7 +3,7 @@ Setting up the control server
 You would need to install epel repo from the following location
 
 #+BEGIN_SRC bash
-http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+  yum install http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 #+END_SRC
 
 Once that is done, you can setup the control server by installing the following packages
