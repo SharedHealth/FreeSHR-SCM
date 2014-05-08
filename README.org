@@ -13,4 +13,10 @@ Once that is done, you can setup the control server by installing the following 
   yum install https://github.com/SharedHealth/FreeSHR-SCM/raw/master/dist/shr_scm-0.1-1.noarch.rpm
 #+END_SRC
 
+To install bahmni locally, run
+
+#+BEGIN_SRC bash
+ ansible-deploy --ask-pass /playbooks/FreeSHR-Playbooks/bahmni/site.yml --skip-tags "go-deploy"
+#+END_SRC
+
 Please ensure that the home directory on the target system is not mounted with noexec flag.
