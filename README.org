@@ -20,3 +20,8 @@ To install bahmni locally, run
 #+END_SRC
 
 Please ensure that the home directory on the target system is not mounted with noexec flag.
+
+TODO
+----
+
+1. Add task to set bdshr in bahmni environment to sudoers with no passwd during initial setup for the subsequent pipeline tasks
