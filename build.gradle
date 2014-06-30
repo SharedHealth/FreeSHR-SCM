@@ -1,10 +1,13 @@
 buildscript {
   repositories {
-    mavenCentral()
-  }
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+        jcenter()
+    }
 
   dependencies {
-    classpath 'com.trigonic:gradle-rpm-plugin:1.3'
+    classpath 'com.netflix.nebula:gradle-ospackage-plugin:1.9.1+'
   }
 }
 
@@ -38,13 +41,13 @@ task shr_scm_utils(type: Rpm) {
 }
 
 task shr_scm(type: Rpm) {
- 
+
   packageName = 'shr_scm'
   version = '0.1'
-  release = 1 
+  release = 1
   arch = NOARCH
   os = LINUX
-  
+
   requires('shr_scm_utils')
   requires('ansible')
 
@@ -53,7 +56,7 @@ task shr_scm(type: Rpm) {
   from('.') {
     include 'placeholder'
   }
-  
+
 }
 
 task buildAll << {
@@ -66,7 +69,7 @@ buildAll.dependsOn=["shr_scm_utils", "shr_scm"]
 /*Dist Tasks*/
 
 task cleanDist(type: Delete) {
-  delete fileTree(dir: "dist", include: "*.rpm")  
+  delete fileTree(dir: "dist", include: "*.rpm")
 }
 
 task copyDist(type: Copy) {
