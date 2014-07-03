@@ -37,6 +37,7 @@ task shr_scm_utils(type: Rpm) {
   }
 
   postInstall = file("scripts/rpm/clone.sh")
+  postUninstall = file("scripts/rpm/clean.sh")
 
 }
 

@@ -16,7 +16,7 @@ Once that is done, you can setup the control server by installing the following 
 To install bahmni locally, run
 
 #+BEGIN_SRC bash
- ansible-deploy --ask-pass /playbooks/FreeSHR-Playbooks/bahmni/site.yml --skip-tags "go-deploy"
+ ansible-deploy --ask-pass /playbooks/FreeSHR-Bahmni-Playbooks/bahmni/site.yml --skip-tags "go-deploy"
 #+END_SRC
 
 Please ensure that the home directory on the target system is not mounted with noexec flag.
